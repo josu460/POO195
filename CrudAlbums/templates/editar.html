@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Albums</title>
+</head>
+<body>
+
+    <form action="/ActualizarAlbum/{{album.0}}" method="post">
+
+
+
+        <label>Titulo:</label>
+        <input type="text" name="txtTitulo" value="{{album.1}}">
+
+        <label>Artista</label>
+        <input type="text" name="txtArtista"value="{{album.2}}">
+
+
+        <label>Año</label>
+        <input type="number" name="txtAnio"value="{{album.3}}">
+
+        <button type="submit">Editar Album</button>
+
+        <br>
+        <br>
+        <br>
+
+
+    </tbody>
+</body>

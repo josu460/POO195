@@ -6,17 +6,71 @@
     <title>Formulario Albums</title>
 </head>
 <body>
-    <form action="/guardaralbum" method="post">
-        <label>Titulo: </label>
+<!-- mensaje con jinja -->
+{%with msj= get_flashed_messages() %}
+{% if msj %}
+{% for mensaje in msj %}
+
+    <h1>{{mensaje}}</h1>
+
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+
+    <form action="/GuardarAlbum" method="post">
+
+
+
+        <label>Titulo:</label>
         <input type="text" name="txtTitulo">
-        <br>
-        <label>Artista: </label>
+
+        <label>Artista</label>
         <input type="text" name="txtArtista">
-        <br>
-        <label>Año: </label>
+
+
+        <label>Año</label>
         <input type="number" name="txtAnio">
-        <br>
+
         <button type="submit">Guardar Album</button>
+        <br>
+        <br>
+        <br>
     </form>
+    
+        <table>
+            <thead>
+                <tr>
+                    <td>ID:</td>
+                    <td>Album</td>
+                    <td>Artista</td>
+                    <td>Año: </td>
+                    <td>Operaciones</td>
+                </tr>
+            </thead>
+    
+
+
+
+    <tbody>
+        {%for album in albums %}
+        <tr>
+        <td>{{album.0}}</td>
+        <td>{{album.1}}</td>
+        <td>{{album.2}}</td>
+        <td>{{album.3}}</td>
+        <td><a href="/editar/{{album.0}}"> Editar</a></td>
+        <td><a href="/eliminar/{{album.0}}" onclick="return eliminar()"> Borrar</a></td>
+
+        {%endfor%}
+    </tr>
+
+
+    </tbody>
 </body>
+
+<script>
+    function eliminar(){
+        return confirm("¿Desea eliminar el album?");
+    }
+</script>
 </html>
