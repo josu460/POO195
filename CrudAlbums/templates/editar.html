@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Albums</title>
-</head>
-<body>
+{% extends "plantilla.html" %}
+
+{%block body%}
+<h1>Editar de album</h1>
 
     <form action="/ActualizarAlbum/{{album.0}}" method="post">
 
@@ -23,10 +19,6 @@
 
         <button type="submit">Editar Album</button>
 
-        <br>
-        <br>
-        <br>
+    </form>
 
-
-    </tbody>
-</body>
+{%endblock%}
