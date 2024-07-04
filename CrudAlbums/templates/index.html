@@ -7,10 +7,22 @@
 {% if msj %}
 {% for mensaje in msj %}
 
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<!-- aqui va el script de sweetalert -->
+ 
+<script>
+ Swal.fire({
+  //position: "top-end",
+  title: "Correcto",
+  icon: "success",
+  title: "Album guardado correctamente",
+  showConfirmButton: false,
+  timer: 1500
+});
+</script>
+<!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
     <strong>{{mensaje}}</strong> 
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+</div>  -->
 
 
     {%endfor%}
@@ -21,32 +33,37 @@
     <div class="row">
         <div class="col-md-5">
            <!-- aqui va el formulario -->
-
+            <div class="container"> <!-- con este div abro el contenedor del formulario -->
            <form action="/GuardarAlbum" method="post">
 
+            <div class="mb-3">
+                <label>Titulo:</label>
+                <input type="text" name="txtTitulo" class="form-control">
+            </div>
 
+            <div class="mb-3">
+                <label>Artista</label>
+                <input type="text" name="txtArtista" class="form-control">
+            </div>
+<!-- aqui es para espaciar los inputs y darle el diseño que tomamos de la clase de bootstrap -->
+            <div class="mb-3">
+                <label>Año</label>
+                <input type="number" name="txtAnio"  class="form-control">
+            </div>
 
-            <label>Titulo:</label>
-            <input type="text" name="txtTitulo">
     
-            <label>Artista</label>
-            <input type="text" name="txtArtista">
-    
-    
-            <label>Año</label>
-            <input type="number" name="txtAnio">
-    
-            <button type="submit">Guardar Album</button>
-            <br>
-            <br>
-            <br>
+            <button type="submit" class="btn btn-outline-success mt-2 mb-3">Guardar Album</button>
         </form>
         </div>
+
+    </div> <!-- con este div cierro el contenedor del formulario -->
+
+        
         <div class="col-md-7">
             <!-- aqui va la tabla -->
-            <table>
+            <table class="table table-dark">
                 <thead>
-                    <tr>
+                    <tr class="table-active">
                         <td>ID:</td>
                         <td>Album</td>
                         <td>Artista</td>
@@ -65,9 +82,9 @@
             <td>{{album.1}}</td>
             <td>{{album.2}}</td>
             <td>{{album.3}}</td>
-            <td><a href="/editar/{{album.0}}"> Editar</a></td>
-            <td><a href="/eliminar/{{album.0}}" onclick="return eliminar()"> Borrar</a></td>
-    
+            <td><a href="/editar/{{album.0}} "  class="btn btn-primary"> Editar</a>
+            <a href="/eliminar/{{album.0}}" onclick="return eliminar()" class="btn btn-danger"> Borrar</a></td>
+
             {%endfor%}
         </tr>
         </tbody>

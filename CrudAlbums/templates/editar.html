@@ -1,24 +1,32 @@
+
 {% extends "plantilla.html" %}
 
 {%block body%}
-<h1>Editar de album</h1>
+<div class="container">
+<h1 class="text-center mt-4 mb-4 display-4 text-info">Editar de album</h1>
 
     <form action="/ActualizarAlbum/{{album.0}}" method="post">
 
+        <div class="mb-3">
+            <label>Titulo:</label>
+            <input type="text" name="txtTitulo" value="{{album.1}}" class="form-control">
+    
+        </div>
 
+        <div class="mb-3">
+            <label>Artista</label>
+            <input type="text" name="txtArtista"value="{{album.2}}" class="form-control">
+    
+        </div>
 
-        <label>Titulo:</label>
-        <input type="text" name="txtTitulo" value="{{album.1}}">
-
-        <label>Artista</label>
-        <input type="text" name="txtArtista"value="{{album.2}}">
-
-
-        <label>Año</label>
-        <input type="number" name="txtAnio"value="{{album.3}}">
-
-        <button type="submit">Editar Album</button>
-
+        <div class="mb-3">
+            <label>Año</label>
+            <input type="number" name="txtAnio"value="{{album.3}}" class="form-control">
+    
+        </div>
+        <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-outline-info mb-5">Editar Album</button>
+        </div>
     </form>
-
+</div>
 {%endblock%}
