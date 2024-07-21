@@ -5,7 +5,7 @@
 <div class="container">
 <h1 class="text-center mt-4 mb-4 display-4 text-info">Editar de album</h1>
 
-    <form action="/ActualizarAlbum/{{album.0}}" method="post">
+    <form action="/ActualizarAlbum/{{album.0}}" method="post" enctype="multipart/form-data">
 
         <div class="mb-3">
             <label>Titulo:</label>
@@ -24,6 +24,21 @@
             <input type="number" name="txtAnio"value="{{album.3}}" class="form-control">
     
         </div>
+
+        <div class="mb-3">
+            <label>Imagen Actual: </label><br>
+            {% if album[4] %}
+            <img src="{{ album[4] }}" alt="{{ album.1 }}" style="width: 100px;">
+            {% else %}
+            No image
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            <label>Subir Nueva Imagen: </label>
+            <input type="file" name="Imagen" class="form-control">
+        </div>
+
         <div class="d-grid gap-2">
         <button type="submit" class="btn btn-outline-info mb-5">Editar Album</button>
         </div>

@@ -34,7 +34,7 @@
         <div class="col-md-5">
            <!-- aqui va el formulario -->
             <div class="container"> <!-- con este div abro el contenedor del formulario -->
-           <form action="/GuardarAlbum" method="post">
+           <form action="/GuardarAlbum" method="post" enctype="multipart/form-data">
 
             <div class="mb-3">
                 <label>Titulo:</label>
@@ -50,7 +50,11 @@
                 <label>Año</label>
                 <input type="number" name="txtAnio"  class="form-control">
             </div>
-
+<!-- aqui esta el input para subir la imagen del album -->
+            <div class="mb-3">
+                <label>Imagen: </label>
+                <input type="file" name="Imagen"  class="form-control">
+            </div>
     
             <button type="submit" class="btn btn-outline-success mt-2 mb-3">Guardar Album</button>
         </form>
@@ -68,6 +72,7 @@
                         <td>Album</td>
                         <td>Artista</td>
                         <td>Año: </td>
+                        <td>url_Imagen</td>
                         <td>Operaciones</td>
                     </tr>
                 </thead>
@@ -82,6 +87,15 @@
             <td>{{album.1}}</td>
             <td>{{album.2}}</td>
             <td>{{album.3}}</td>
+            
+            <!-- agregamos este td para mostrar la imagen del album -->
+            <td>
+                {% if album.4 %}
+                <img src="{{ album.4 }}" alt="{{ album.1 }}" style="width: 100px;">
+                {% else %}
+                No image
+                {% endif %}
+            </td>
             <td><a href="/editar/{{album.0}} "  class="btn btn-primary"> Editar</a>
             <a href="/eliminar/{{album.0}}" onclick="return eliminar()" class="btn btn-danger"> Borrar</a></td>
 
